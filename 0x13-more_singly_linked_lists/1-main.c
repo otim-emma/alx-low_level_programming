@@ -7,7 +7,7 @@
  * main - check the code for ALX School students.
  *
  * Return: Always 0.
-*/
+ */
 int main(void)
 {
 	listint_t *head;
@@ -25,7 +25,7 @@ int main(void)
 	new->n = 9;
 	new->next = head;
 	head = new;
-	n = print_listint(head);
+	n = listint_len(head);
 	printf("-> %lu elements\n", n);
 	free(new);
 	return (0);
