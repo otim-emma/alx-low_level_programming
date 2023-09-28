@@ -19,7 +19,7 @@ void print_bin(unsigned long int number)
 }
 
 /**
- * set_bit - sets the value of a bit to 1 at a given
+ * clear_bit - sets the value of a bit to 1 at a given
  *           index.
  *
  * @n: number
@@ -27,7 +27,7 @@ void print_bin(unsigned long int number)
  *
  * Return: 1 if it worked OR -1 if it failed
 */
-int set_bit(unsigned long int *n, unsigned int index)
+int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned long int mask = 1;
 	#ifdef DEBUG
@@ -38,14 +38,14 @@ int set_bit(unsigned long int *n, unsigned int index)
 	if (index > INT_BITS)
 		return (-1);
 
-	mask <<= index; /*create mask based on index position*/
+	mask = ~(mask << index); /*create mask based on index position*/
 
-	*n = (*n | mask);
+	*n = (*n & mask);
 
 	#ifdef DEBUG
 	printf("\n%ld in binary is ", n_before);
 	print_bin(n_before);
-	printf(" while mask right shifted to index %d is ", index);
+	printf(" while NOT (~) of mask right shifted to index %d is ", index);
 	print_bin(mask);
 	printf(" our new value n in binary is ");
 	print_bin(*n);
